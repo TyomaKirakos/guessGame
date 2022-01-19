@@ -50,35 +50,36 @@
 
 // guessNumber(x);
 
-let x = Math.floor(Math.random()*101);
-console.log(x);
 
-function one(x){
-    function two(){
-        const a = +prompt("Введите число");
-        if (isNaN(a)){
+
+function one(){
+    return function two(secretNumber){
+        console.log(secretNumber);
+        const userNumber = +prompt("Введите число");
+        if (isNaN(userNumber)){
             alert('Введите число!');
-            two();
-        } else if (a == false){
-            return;
+            two(secretNumber);
+        } else if (userNumber == false){
+            return
         }
 
-        if (a != x){
-            if (x < a){
+        if (userNumber != secretNumber){
+            if (secretNumber < userNumber){
                 alert('Загаданное число меньше!');
-                two();
-            } else if (x > a){
+                two(secretNumber);
+            } else if (secretNumber > userNumber){
                 alert('Загаданное число больше!');
-                two();
+                two(secretNumber);
             }
             
         } else {
             alert('Вы победили')
+            return
         }
     }
 
-    two();
-
+    // two();
 }
 
-one(x);
+const number = one();
+number(Math.floor(Math.random()*101));
