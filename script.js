@@ -56,16 +56,18 @@ function one() {
     let moves = 3;
 
     return function two(secretNumber) {
-        console.log(secretNumber);
         if (moves == 0) {
-            if (prompt("У вас уже нет свободных ходов. Хотите сыграть ещё?")) {
-                number(Math.floor(Math.random() * 101));
-            } else {
-                return;
-            }
+            // if (confirm("У вас уже нет свободных ходов. Хотите сыграть ещё?")) {
+            //     one(Math.floor(Math.random() * 101));
+            // } else {
+            //     return;
+            // }
+            alert('У вас уже нет свободных ходов.');
+            return;
         }
+        console.log(secretNumber);
 
-        let userNumber = +prompt("Введите число");
+        const userNumber = +prompt(`Введите число. У вас осталось ${moves} ходов`);
 
         if (isNaN(userNumber) || userNumber == '') {
             alert('Введите число!');
@@ -92,5 +94,5 @@ function one() {
     // two();
 }
 
-let number = one();
+const number = one();
 number(Math.floor(Math.random() * 101));
