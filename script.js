@@ -52,26 +52,39 @@
 
 
 
-function one(){
-    return function two(secretNumber){
+function one() {
+    let moves = 3;
+
+    return function two(secretNumber) {
+        if (moves == 0) {
+            // if (confirm("У вас уже нет свободных ходов. Хотите сыграть ещё?")) {
+            //     one(Math.floor(Math.random() * 101));
+            // } else {
+            //     return;
+            // }
+            alert('У вас уже нет свободных ходов.');
+            return;
+        }
         console.log(secretNumber);
-        const userNumber = +prompt("Введите число");
-        if (isNaN(userNumber)){
+
+        const userNumber = +prompt(`Введите число. У вас осталось ${moves} ходов`);
+
+        if (isNaN(userNumber) || userNumber == '') {
             alert('Введите число!');
             two(secretNumber);
-        } else if (userNumber == false){
+        } else if (userNumber == false) {
             return
         }
 
-        if (userNumber != secretNumber){
-            if (secretNumber < userNumber){
-                alert('Загаданное число меньше!');
+        if (userNumber != secretNumber) {
+            moves--;
+            if (secretNumber < userNumber) {
+                alert(`Загаданное число меньше! У вас осталось ${moves} ходов`);
                 two(secretNumber);
-            } else if (secretNumber > userNumber){
-                alert('Загаданное число больше!');
+            } else if (secretNumber > userNumber) {
+                alert(`Загаданное число больше! У вас осталось ${moves} ходов`);
                 two(secretNumber);
             }
-            
         } else {
             alert('Вы победили')
             return
@@ -82,4 +95,4 @@ function one(){
 }
 
 const number = one();
-number(Math.floor(Math.random()*101));
+number(Math.floor(Math.random() * 101));
