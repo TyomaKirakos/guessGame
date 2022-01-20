@@ -73,6 +73,7 @@ function one() {
             alert('Введите число!');
             two(secretNumber);
         } else if (userNumber == false) {
+            alert('Всего хорошего!');
             return
         }
 
@@ -90,6 +91,7 @@ function one() {
                 moves = 10;
                 number(Math.floor(Math.random() * 101));
             } else {
+                alert('Всего хорошего!');
                 return
             }
         }
